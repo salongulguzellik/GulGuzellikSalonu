@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gül Güzellik Salonu - Sanat ve Stil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS Başlangıcı: HOLO Salon Estetiği */
+        :root {
+            --primary-color: #000;
+            --secondary-color: #e91e63; /* Canlı Pembe Vurgu */
+            --darker-cream-tone: #F5E5D5; /* HERO ALANI ARKA PLANI */
+            --tile-red-color: #B85C38; /* RANDEVU ALIN BUTONU RENGİ */
+            --tile-red-hover: #A04A2D;
+            --light-color: #fcf8f3; /* Orijinal Beyazımsı Krem Tonu */
+            --font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+        
+        /* 1. Başlık Alanı (Hero) */
+        header {
+            background-color: var(--darker-cream-tone);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-color);
+            position: relative;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        header::before {
+            content: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            font-size: 4.5em;
+            margin-bottom: 0.2em;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        header p {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            background-color: var(--tile-red-color);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-weight: 700;
+            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block; /* Butonun düzgün hizalanması için */
+        }
+        .cta-button:hover {
+            background-color: var(--tile-red-hover);
+            transform: scale(1.05);
+        }
+        
+        /* YENİ: HERO ALANI INSTAGRAM STİLİ */
+        .hero-instagram {
+            display: block;
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .hero-instagram a {
+            color: var(--primary-color); /* Siyah Metin */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .hero-instagram a:hover {
+            color: var(--secondary-color); /* Pembe Vurgu */
+        }
+        .hero-instagram i {
+            color: var(--secondary-color); /* Pembe İkon */
+            margin-right: 5px;
+        }
+        /* SON: HERO ALANI INSTAGRAM STİLİ */
+
+        /* Navigasyon */
+        nav {
+            background-color: transparent;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px 0;
+        }
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+        nav.scrolled a {
+            color: white !important; /* Kaydırmada beyaz */
+        }
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Genel İçerik Bölümleri */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 3em;
+            margin-bottom: 50px;
+            font-weight: 700;
+            color: var(--secondary-color); /* H2 Vurgu Pembe */
+        }
+        
+        /* 3. Avantajlar Bölümü (Arkaplan: Orijinal Krem/Bej) */
+        #advantages {
+            background-color: var(--light-color);
+        }
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .advantage-item {
+            padding: 25px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 10px;
+            background-color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .advantage-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.2);
+        }
+        .advantage-item h3 {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* 2. Hizmetler Bölümü */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .service-item {
+            text-align: left;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .service-item h3 {
+            color: var(--tile-red-color); /* Service H3 Vurgu Kiremit Kırmızısı */
+            font-size: 1.8em;
+            margin-top: 0;
+        }
+        
+        /* 3. Galeri Bölümü */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* 4. İletişim ve Footer */
+        #contact {
+            background-color: var(--light-color);
+        }
+        form {
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: left;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            background-color: var(--tile-red-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: var(--tile-red-hover);
+        }
+        
+        /* İletişim bölümü Instagram stili - Kaldırıldı (Hero'ya taşındı) */
+        .social-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .social-link a {
+            color: var(--secondary-color);
+            font-size: 1.1em;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-link a i {
+            margin-right: 8px;
+            font-size: 1.3em;
+        }
+        .social-link a:hover {
+            color: var(--tile-red-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        
+        /* MEDIA QUERIES (Mobil Uyumluluk İçin) */
+        @media (max-width: 900px) {
+            .services-grid, .advantage-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 3em;
+            }
+            header p {
+                font-size: 1.1em;
+            }
+            section {
+                padding: 60px 15px;
+            }
+            section h2 {
+                font-size: 2em;
+            }
+            .cta-button {
+                padding: 12px 30px;
+            }
+            .services-grid, .advantage-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                padding: 10px 0;
+            }
+            nav a {
+                padding: 10px 10px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="main-nav">
+    <a href="#about">Hakkımızda</a>
+    <a href="#advantages">Neden Biz?</a>
+    <a href="#services">Hizmetler</a>
+    <a href="#gallery">Galeri</a>
+    <a href="#contact">İletişim</a>
+</nav>
+
+<header>
+    <div class="hero-content">
+        <h1>GÜL GÜZELLİK SALONU</h1>
+        <p>Mersin'in En Modern Saç & Stil Stüdyosu</p>
+        <a href="#contact" class="cta-button">RANDEVU ALIN</a>
+        
+        <div class="hero-instagram">
+            <a href="https://www.instagram.com/gul.guzelliksalonu/" target="_blank">
+                <i class="fab fa-instagram"></i> Çalışmalarımızı Instagram'da Görün
+            </a>
+        </div>
+        </div>
+</header>
+
+<section id="about">
+    <h2>SANATIMIZ, SİZİN GÜZELLİĞİNİZ</h2>
+    <p style="max-width: 800px; margin: auto; font-size: 1.15em;">
+        Gül Güzellik Salonu, sadece bir kuaförden öte. Her saç teli ve her stil, bizim için bir tuval. En güncel teknikleri, üstün kaliteli ürünleri ve kişiye özel danışmanlığı birleştirerek, sizin için mükemmel görünümü tasarlıyoruz.
+    </p>
+</section>
+
+<section id="advantages">
+    <h2>NEDEN GÜL GÜZELLİK SALONUNU SEÇMELİSİNİZ?</h2>
+    <div class="advantage-grid">
+        <div class="advantage-item">
+            <h3>✨ Kişiye Özel Sanat</h3>
+            <p>Her müşteri bizim için eşsizdir. Trendleri takip ederken, saçınızın yapısına ve tarzınıza en uygun uygulamayı tasarlarız. Seri üretim yerine, size özel stil garantisi veriyoruz.</p>
+        </div>
+        <div class="advantage-item">
+            <h3>💎 Kalite ve Güven Odaklı Ürünler</h3>
+            <p>Saç ve cilt sağlığınız bizim önceliğimiz. Sadece sektörün en güvenilir, yüksek performanslı ve markalı profesyonel ürünlerini kullanırız (Olaplex, Kerastase vb.).</p>
+        </div>
+        <div class="advantage-item">
+            <h3>🏆 Mersin'de Uzman Ekip</h3>
+            <p>Alanında sertifikalı, yıllardır bu sanata gönül vermiş uzman kadromuzla çalışıyoruz. Kesimden en karmaşık renklendirme tekniklerine kadar her alanda kusursuz sonuçlar için bizi tercih edin.</p>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <h2>UZMANLIK ALANLARIMIZ</h2>
+    <div class="services-grid">
+        <div class="service-item">
+            <h3>BALYAJ & RENK HİZMETLERİ</h3>
+            <p>Işıltılı, doğal görünümlü geçişler. Tamamen kişiselleştirilmiş renk paletleri ve global boyama teknikleri.</p>
+        </div>
+        <div class="service-item">
+            <h3>MODERN KESİM & ŞEKİLLENDİRME</h3>
+            <p>Yüz şeklinize ve tarzınıza en uygun, kalıcı ve bakımı kolay kesimler. Bob, Lob, Katlı Kesimler.</p>
+        </div>
+        <div class="service-item">
+            <h3>SAÇ BAKIMI & ONARIM</h3>
+            <p>Keratin, Olaplex ve Derinlemesine Nem Terapileri. Saçınızı içeriden onararak parlaklık ve güç kazandırırız.</p>
+        </div>
+        <div class="service-item">
+            <h3>MAKYAJ & ÖZEL GÜN HAZIRLIĞI</h3>
+            <p>Gelin makyajı, mezuniyet makyajı ve profesyonel fotoğraf çekimi makyajları ile kusursuz görünüm.</p>
+        </div>
+        <div class="service-item">
+            <h3>KAŞ & KİRPİK TASARIMI</h3>
+            <p>Microblading, Kirpik Lifting, İpek Kirpik ve kaş laminasyonu ile bakışlarınıza derinlik katın.</p>
+        </div>
+        <div class="service-item">
+            <h3>CİLT BAKIMI & YÜZ TERAPİLERİ</h3>
+            <p>Hydrafacial, klasik cilt bakımı, peeling ve leke tedavileri ile pürüzsüz ve canlı bir cilt.</p>
+        </div>
+        <div class="service-item">
+            <h3>LAZER EPİLASYONU</h3>
+            <p>En son teknoloji cihazlarla güvenli ve kalıcı tüy çözümleri. Hızlı ve konforlu seanslar.</p>
+        </div>
+        <div class="service-item">
+            <h3>PROTEZ TIRNAK</h3>
+            <p>Jel ve akrilik tırnak uygulamaları, kalıcı oje ve manikür/pedikür hizmetleri.</p>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <h2>ÇALIŞMALARIMIZ</h2>
+    <div class="gallery-grid">
+        <img src="resimler/balyaj_ornegi_1.jpg" alt="Balyaj Uygulaması">
+        
+        <img src="resimler/modern_kesim_2.jpg" alt="Modern Kesim Örneği">
+        
+        <img src="resimler/protez_tirnak_3.jpg" alt="Protez Tırnak Örneği">
+        
+        <img src="resimler/makyaj_4.jpg" alt="Gelin Makyajı Örneği">
+        
+        <img src="resimler/ombre_5.jpg" alt="Ombre Saç Örneği">
+        
+        <img src="resimler/kirpik_6.jpg" alt="Kirpik Tasarım Örneği">
+    </div>
+</section>
+
+<section id="contact">
+    <h2>BİZE ULAŞIN & RANDEVU ALIN</h2>
+    <form action="https://formspree.io/f/mnnevbrl" method="POST">
+        <input type="text" placeholder="Adınız Soyadınız" required name="Ad Soyad">
+        <input type="email" placeholder="E-posta Adresiniz" required name="email">
+        <textarea placeholder="İstediğiniz Hizmet (Kesim, Boya, Bakım) ve Randevu Tarihi Tercihiniz" rows="4" required name="message"></textarea>
+        <button type="submit">RANDEVU GÖNDER</button>
+        <p style="text-align: center; color: var(--primary-color); font-weight: 500; margin-top: 15px; margin-bottom: 5px;">
+            **Yoğunluktan etkilenmemek için lütfen randevu talebinizi hemen iletin.** Uzman ekibimiz, müsaitliğinizi onaylamak için en kısa sürede e-posta yoluyla size dönüş yapacaktır.
+        </p>
+        <div style="text-align: center; margin-top: 10px; font-weight: 700; color: var(--tile-red-color); font-size: 1em; line-height: 1.5;">
+            <p style="margin: 0;">HAFTA İÇİ (Pazartesi - Cuma): 07:00 – 17:00</p>
+            <p style="margin: 0;">CUMARTESİ: 09:30 – 18:00 | PAZAR: KAPALI</p>
+        </div>
+    </form>
+</section>
+
+<footer>
+    <p>Adres: Sağlık, 202. Cd., 33080 Toroslar/Mersin</p>
+    <p>Email: salongulguzellik@gmail.com</p>
+    <p>
+        <a href="https://www.instagram.com/gul.guzelliksalonu/" target="_blank" style="color: white; text-decoration: none;">
+            <i class="fab fa-instagram"></i> @gul.guzelliksalonu
+        </a>
+    </p>
+    <p>© 2025 Gül Güzellik Salonu. Tüm Hakları Saklıdır.</p>
+</footer>
+
+<script>
+    // Scroll olayında navigasyon çubuğunu karartma
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>
